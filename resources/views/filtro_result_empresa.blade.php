@@ -23,8 +23,6 @@
             <tr>
             <th scope="col">Regiao</th>
             <th scope="col">Estado</th>
-            <th scope="col">IBGE UF</th>
-            <th scope="col">IBGE Cidade</th>
             <th scope="col">Cidade</th>
             <th scope="col">Clientes</th>
             <th scope="col">Total Vendido</th>
@@ -35,8 +33,6 @@
             <tr>
                     <td>{{$d->regiao}}</td>
                     <td>{{$d->Estado}}</td>
-                    <td>{{$d->IBGEEstado}}</td>
-                    <td>{{$d->IBGECidade}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
                     <td>{{number_format($d->TotalVendido, 2, ',', '.')}} L</td>

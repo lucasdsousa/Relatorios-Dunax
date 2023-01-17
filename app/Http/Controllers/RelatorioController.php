@@ -42,7 +42,7 @@ class RelatorioController extends Controller
                     ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
                     ->selectRaw('dw_dunax.Data, populacao.regiao, dw_dunax.Estado, dw_dunax.IBGEEstado, dw_dunax.IBGECidade, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
                     ->where('dw_dunax.situacao', '<>', 'Cancelado')
-                    ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
+                    ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
                     ->whereBetween('dw_dunax.Data', ['2022-01-01', '2022-01-31'])
                     ->groupBy('dw_dunax.Cidade')
                     ->orderByRaw('dw_dunax.Data, dw_dunax.Cidade')
@@ -62,29 +62,28 @@ class RelatorioController extends Controller
         $dataI = $request->input('dataInicial');
         $dataF = $request->input('dataFinal');
 
-        $dataF_plus1 = date_add(date_create($dataF), date_interval_create_from_date_string("1 day"));
+        $dataF_plus1 = date_format(date_add(date_create($dataF), date_interval_create_from_date_string("1 day")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
         $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
         $totais = 0;
 
-        foreach($period as $p){
+        /* foreach($period as $p){
             //print_r($p->format("Y-m") . "<br>");
             $totais = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalMes')->whereRaw('Data regexp "'. $p->format("Y-m") .'"')->get();
             //print_r($totais);
-        }
+        } */
 
         $data = DB::table('dw_dunax')
                     ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
-                    ->selectRaw('dw_dunax.Data, populacao.regiao, dw_dunax.Estado, dw_dunax.IBGEEstado, dw_dunax.IBGECidade, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
+                    ->selectRaw('populacao.regiao, dw_dunax.Estado, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
                     ->where('dw_dunax.situacao', '<>', 'Cancelado')
-                    ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
+                    ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
                     ->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
                     ->groupBy('dw_dunax.Cidade')
-                    ->orderByRaw('dw_dunax.Data, dw_dunax.Cidade')
                     ->get();
 
-        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF])->first();
+        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->first();
         //print_r($total_vendido->TotalVendido);
 
         return view('filtro_result', compact('data', 'period', 'total_vendido'));
@@ -99,6 +98,8 @@ class RelatorioController extends Controller
         
         $dataI = $request->input('dataInicial');
         $dataF = $request->input('dataFinal');
+
+        $dataF_plus1 = date_format(date_add(date_create($dataF), date_interval_create_from_date_string("1 day")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
         $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
@@ -115,29 +116,27 @@ class RelatorioController extends Controller
         //$consumo_per_capita = DB::table('dw_dunax')->where('situacao', '<>', 'Cancelado')->pluck();
         //$venda_per_capita = DB::table('dw_dunax')->where('situacao', '<>', 'Cancelado')->pluck();
 
-        print_r($regiao);
 
-        $data = DB::table('dw_dunax')
+        /* $data = DB::table('dw_dunax')
         ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
         ->selectRaw('dw_dunax.Data, populacao.regiao, dw_dunax.Estado, dw_dunax.IBGEEstado, dw_dunax.IBGECidade, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
         ->where('dw_dunax.situacao', '<>', 'Cancelado')
-        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
+        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
         ->where('dw_dunax.Estado', '=', $estado)
-        ->whereBetween('dw_dunax.Data', [$dataI, $dataF])
+        ->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
         ->groupBy('dw_dunax.Cidade')
         ->orderByRaw('dw_dunax.Data, dw_dunax.Cidade')
-        ->get();
+        ->get(); */
 
-        /* $clientes = DB::table('dw_dunax')
-                        ->count('Cliente')
-                        ->groupBy('Cliente')
-                        ->where('Estado', '=', $estado)
-                        ->where('Situacao', '<>', 'Cancelado')
-                        ->whereRaw('Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
-                        ->whereBetween('Data', [$dataI, $dataF])
-                        ->value(); */
+        $data = DB::table('dw_dunax')
+                    ->selectRaw('Estado, Cidade, count(distinct Cliente) as Clientes, sum(Quantidade * Volumes) as TotalVendido')
+                    ->where('Estado', '=', $estado)
+                    ->whereRaw('Objeto not regexp "Arla" and Objeto not regexp "Freio" and Objeto not regexp "Aditivo" and Situacao <> "Cancelado"')
+                    ->whereBetween('Data', [$dataI, $dataF_plus1])
+                    ->groupBy('Cidade')
+                    ->get();
 
-        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF])->where('Situacao', '<>', 'Cancelado')->first();
+        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->where('Situacao', '<>', 'Cancelado')->first();
 
 
         return view('filtro_result_estado', compact('estado', 'period', 'regiao', 'mes',  'data', 'total_vendido',  'pop_cidade', 'pop_estado', 'total_litros_vendidos', 'total_venda_lub_cidade', 'total_venda_lub_estado', 'total_venda_lub_regiao'));
@@ -153,6 +152,8 @@ class RelatorioController extends Controller
         $dataI = $request->input('dataInicial');
         $dataF = $request->input('dataFinal');
 
+        $dataF_plus1 = date_format(date_add(date_create($dataF), date_interval_create_from_date_string("1 day")), 'Y-m-d');
+
         $interval = DateInterval::createFromDateString('1 month');
         $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
 
@@ -167,16 +168,15 @@ class RelatorioController extends Controller
 
         $data = DB::table('dw_dunax')
         ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
-        ->selectRaw('dw_dunax.Data, populacao.regiao, dw_dunax.Estado, dw_dunax.IBGEEstado, dw_dunax.IBGECidade, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
+        ->selectRaw('populacao.regiao, populacao.uf, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
         ->where('dw_dunax.situacao', '<>', 'Cancelado')
-        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
+        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
         ->where('populacao.regiao', '=', $regiao)
-        ->whereBetween('dw_dunax.Data', [$dataI, $dataF])
+        ->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
         ->groupBy('dw_dunax.Cidade')
-        ->orderByRaw('populacao.regiao, dw_dunax.Cidade')
         ->get();
 
-        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF])->first();
+        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->first();
 
 
         return view('filtro_result_regiao', compact('estados', 'period', 'regiao', 'mes',  'data', 'total_vendido', 'pop_regiao', 'total_litros_vendidos', 'total_venda_lub_regiao'));
@@ -190,6 +190,8 @@ class RelatorioController extends Controller
         
         $dataI = $request->input('dataInicial');
         $dataF = $request->input('dataFinal');
+
+        $dataF_plus1 = date_format(date_add(date_create($dataF), date_interval_create_from_date_string("1 day")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
         $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
@@ -209,14 +211,14 @@ class RelatorioController extends Controller
         ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
         ->selectRaw('dw_dunax.Data, populacao.regiao, dw_dunax.Estado, dw_dunax.IBGEEstado, dw_dunax.IBGECidade, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
         ->where('dw_dunax.situacao', '<>', 'Cancelado')
-        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio"')
+        ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
         ->where('dw_dunax.Empresa', '=', $empresa)
-        ->whereBetween('dw_dunax.Data', [$dataI, $dataF])
+        ->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
         ->groupBy('dw_dunax.Cidade')
         ->orderByRaw('populacao.regiao, dw_dunax.Cidade')
         ->get();
 
-        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF])->first();
+        $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->first();
 
 
         return view('filtro_result_empresa', compact('data', 'period', 'total_vendido'));

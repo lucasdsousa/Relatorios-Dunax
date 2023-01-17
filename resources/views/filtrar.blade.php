@@ -64,10 +64,10 @@
         </div>
 
         <div class="col-12 mt-3">
-            <button type="submit" id="buscar" class="btn btn-info mx-2 text-white" formaction="/Filtrar">Filtrar Período</button>
-            <button type="submit" id="estado" class="btn btn-success mx-2" formaction="/Filtrar-Estado">Filtrar Estado</button>
-            <button type="submit" id="regiao" class="btn btn-primary mx-2" formaction="/Filtrar-Regiao">Filtrar Região</button>
-            <button type="submit" id="empresa" class="btn btn-danger text-white mx-2" formaction="/Filtrar-Empresa">Filtrar Empresa</button>
+            <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button>
+            <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button>
+            <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button>
+            <button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar-Empresa">Filtrar Empresa</button>
         </div>
     </div>
 </form>

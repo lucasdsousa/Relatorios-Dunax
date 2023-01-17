@@ -17,11 +17,8 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Data</th>
             <th scope="col">Regiao</th>
             <th scope="col">Estado</th>
-            <th scope="col">IBGE UF</th>
-            <th scope="col">IBGE Cidade</th>
             <th scope="col">Cidade</th>
             <th scope="col">Clientes</th>
             <th scope="col">Total Vendido</th>
@@ -29,11 +26,8 @@
         <tbody>
                 @foreach($data as $d)
             <tr>
-                    <th scope="row">{{substr($d->Data, 0, 10)}}</th>
                     <td>{{$regiao->regiao}}</td>
                     <td>{{$d->Estado}}</td>
-                    <td>{{$d->IBGEEstado}}</td>
-                    <td>{{$d->IBGECidade}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
                     <td>{{number_format($d->TotalVendido, 2, ',', '.')}} L</td>
