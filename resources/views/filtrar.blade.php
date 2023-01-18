@@ -6,7 +6,10 @@
     @csrf
 
     <div class="row container mt-5">
-        <h3 class="mb-5">Litros Totais do Banco de Dados: {{ number_format($total_litros_vendidos->total, 2, ",", ".") }}</h3>
+        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
+    </div>
+
+    <div class="row container mt-5">
 
         <div class="col-md-2">
             <label for="dataInicial" class="form-label">Data Inicial</label>

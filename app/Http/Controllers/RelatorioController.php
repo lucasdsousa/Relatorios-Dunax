@@ -10,7 +10,13 @@ use DateInterval;
 
 class RelatorioController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        $totais = DB::table('totais')->get();
+        return view('index', compact('totais'));
+    }
+    
+    public function personalizado(Request $request)
     {
         ini_set('memory_limit', '2056M');
 
@@ -75,12 +81,13 @@ class RelatorioController extends Controller
         } */
 
         $data = DB::table('dw_dunax')
-                    ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+                    ->join('populacao', 'dw_dunax.IBGEEstado', '=', 'populacao.cod_uf')
                     ->selectRaw('populacao.regiao, dw_dunax.Estado, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, dw_dunax.Empresa')
                     ->where('dw_dunax.situacao', '<>', 'Cancelado')
                     ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo"')
                     ->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
                     ->groupBy('dw_dunax.Cidade')
+                    ->orderByRaw('Clientes desc')
                     ->get();
 
         $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->first();

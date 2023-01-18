@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row container mt-5">
+    <a href="/Filtrar" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
+</div>
+
 <div>
         @foreach($period as $p)
             @php
