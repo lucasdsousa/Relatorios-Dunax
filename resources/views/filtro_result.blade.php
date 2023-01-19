@@ -20,12 +20,12 @@
             @endphp
 
             @foreach($totais as $t)
-            <h3 class="mt-5 mb-3">Total vendido em {{ $p->format("m/Y") }}: {{ number_format($t->TotalMes, 2, ',', '.') }} Litros</h3>
+                <h3 class="mt-3 mb-3">Total vendido em {{ $p->format("m/Y") }}: {{ number_format($t->TotalMes, 2, ',', '.') }} Litros</h3>
             @endforeach
         @endforeach
         
-        <h5 class="mt-5 mb-3">Quantidade total de cidades {{ $cidades }}</h5>
-        <h5 class="mb-3">Quantidade total de clientes {{ $clientes }}</h5>
+        <h5 class="mt-5 mb-3">Quantidade total de cidades atendidas no período {{ $cidades }}</h5>
+        <h5 class="mb-3">Quantidade total de clientes atendidos no período {{ $clientes }}</h5>
 </div>
 
 <div>

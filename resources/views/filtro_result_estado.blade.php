@@ -25,8 +25,8 @@
             @endforeach
         @endforeach
         
-        <h5 class="mt-5 mb-3">Quantidade de cidades em  {{ $estado }}: {{ $cidades }}</h5>
-        <h5 class="mb-3">Quantidade de clientes em  {{ $estado }}: {{ $clientes }}</h5>
+        <h5 class="mt-5 mb-3">Quantidade de cidades atendidas em  {{ $estado }}: {{ $cidades }} / {{ $cidadesEstado }} = {{ round(($cidades / $cidadesEstado) * 100, 2) }}%</h5>
+        <h5 class="mb-3">Quantidade de clientes atendidos em {{ $estado }}: {{ $clientes }}</h5>
 </div>
 
 <div>

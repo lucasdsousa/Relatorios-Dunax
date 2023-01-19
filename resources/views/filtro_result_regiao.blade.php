@@ -25,8 +25,8 @@
             @endforeach
         @endforeach
         
-        <h5 class="mt-5 mb-3">Quantidade de cidades em  {{ $regiao }}: {{ $cidades }}</h5>
-        <h5 class="mb-3">Quantidade de clientes em  {{ $regiao }}: {{ $clientes }}</h5>
+        <h5 class="mt-5 mb-3">Quantidade total de cidades atendidas no período {{ $cidades }}</h5>
+        <h5 class="mb-3">Quantidade total de clientes atendidos no período {{ $clientes }}</h5>
 </div>
 
 <div>
