@@ -72,7 +72,7 @@ class RelatorioController extends Controller
         $dataI_minus1 = date_format(date_add(date_create($dataI), date_interval_create_from_date_string("1 day - 2 days")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
-        $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
+        $period = new DatePeriod(new DateTime($dataI_minus1), $interval, new DateTime($dataF_plus1));
         $totais = 0;
 
         /* foreach($period as $p){
@@ -135,7 +135,7 @@ class RelatorioController extends Controller
         $dataI_minus1 = date_format(date_add(date_create($dataI), date_interval_create_from_date_string("1 day - 2 days")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
-        $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
+        $period = new DatePeriod(new DateTime($dataI_minus1), $interval, new DateTime($dataF_plus1));
 
         $estados    = DB::table('populacao')->select('uf')->where('regiao', '=', $regiao)->get();
         $pop_regiao = DB::table('populacao')->where('regiao', '=', $regiao)->sum('populacao_estimada');
@@ -201,7 +201,7 @@ class RelatorioController extends Controller
         $dataI_minus1 = date_format(date_add(date_create($dataI), date_interval_create_from_date_string("1 day - 2 days")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
-        $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
+        $period = new DatePeriod(new DateTime($dataI_minus1), $interval, new DateTime($dataF_plus1));
 
         $regiao     = DB::table('populacao')->select('regiao')->where('uf', '=', $estado)->first();
         $cidades    = DB::table('populacao')->select('nome_municipio')->where('uf', '=', $estado)->get();
@@ -282,7 +282,7 @@ class RelatorioController extends Controller
         $dataI_minus1 = date_format(date_add(date_create($dataI), date_interval_create_from_date_string("1 day - 2 days")), 'Y-m-d');
 
         $interval = DateInterval::createFromDateString('1 month');
-        $period = new DatePeriod(new DateTime($dataI), $interval, new DateTime($dataF));
+        $period = new DatePeriod(new DateTime($dataI_minus1), $interval, new DateTime($dataF_plus1));
         //$mes    = $request->input('mes');
 
         //$estados    = DB::table('populacao')->select('uf')->where('nome_municipio', '=', $cidade)->get();

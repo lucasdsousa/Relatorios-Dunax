@@ -9,21 +9,24 @@
 <div>
         @foreach($period as $p)
             @php
-                $totais = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalMes')
-                                                ->whereRaw('Situacao <> "Cancelado" 
-                                                                    and Objeto not regexp "Arla" 
-                                                                    and Objeto not regexp "Freio" 
-                                                                    and Objeto not regexp "Aditivo"
-                                                                    and Cliente not regexp "DULUB"
-                                                                    and Cliente not regexp "DUNAX" 
-                                                                    and TipoDeOperacao not regexp "Devol"')
-                                                ->whereBetween('Data', [$dataI, $dataF_plus1])                                                
-                                                ->where('Estado', '=', $estado)
+                $totais = DB::table('dw_dunax')->join('populacao', 'dw_dunax.IBGEEstado', '=', 'populacao.cod_uf')
+                                                ->selectRaw('sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalMes')
+                                                ->whereRaw('dw_dunax.Situacao <> "Cancelado" 
+                                                                    and dw_dunax.Objeto not regexp "Arla" 
+                                                                    and dw_dunax.Objeto not regexp "Freio" 
+                                                                    and dw_dunax.Objeto not regexp "Aditivo"
+                                                                    and dw_dunax.Cliente not regexp "DULUB"
+                                                                    and dw_dunax.Cliente not regexp "DUNAX" 
+                                                                    and dw_dunax.TipoDeOperacao not regexp "Devol"
+                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") . '"')                                              
+                                                ->where('dw_dunax.Estado', '=', $estado)
                                                 ->get();
+                
             @endphp
 
             @foreach($totais as $t)
             <h3 class="mt-5 mb-3">Total vendido em {{ $p->format("m/Y") }}: {{ number_format($t->TotalMes, 2, ',', '.') }} Litros</h3>
+            
             @endforeach
         @endforeach
         
