@@ -14,8 +14,11 @@
                                                 ->whereRaw('dw_dunax.Situacao <> "Cancelado" 
                                                                     and dw_dunax.Objeto not regexp "Arla" 
                                                                     and dw_dunax.Objeto not regexp "Freio" 
-                                                                    and dw_dunax.Objeto not regexp "Aditivo" 
-                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") .'"')                                                
+                                                                    and dw_dunax.Objeto not regexp "Aditivo"
+                                                                    and dw_dunax.Cliente not regexp "DULUB"
+                                                                    and dw_dunax.Cliente not regexp "DUNAX"
+                                                                    and TipoDeOperacao not regexp "Devol"')
+                                                ->whereBetween('Data', [$dataI_minus1, $dataF_plus1])                                                
                                                 ->where('dw_dunax.Empresa', '=', $empresa)
                                                 ->get();
             @endphp

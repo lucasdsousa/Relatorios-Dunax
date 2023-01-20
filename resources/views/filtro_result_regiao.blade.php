@@ -10,12 +10,14 @@
         @foreach($period as $p)
             @php
                 $totais = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalMes')
-                                                ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
-                                                ->whereRaw('dw_dunax.Situacao <> "Cancelado" 
-                                                                    and dw_dunax.Objeto not regexp "Arla" 
-                                                                    and dw_dunax.Objeto not regexp "Freio" 
-                                                                    and dw_dunax.Objeto not regexp "Aditivo" 
-                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") .'"')                                                
+                                                ->join('populacao', 'IBGECidade', '=', 'populacao.cod_municipio')
+                                                                    and Objeto not regexp "Arla" 
+                                                                    and Objeto not regexp "Freio" 
+                                                                    and Objeto not regexp "Aditivo"
+                                                                    and Cliente not regexp "DULUB"
+                                                                    and Cliente not regexp "DUNAX"
+                                                                    and TipoDeOperacao not regexp "Devol"')
+                                                ->whereBetween('Data', [$dataI_minus1, $dataF_plus1])                                                
                                                 ->where('populacao.regiao', '=', $regiao)
                                                 ->get();
             @endphp
@@ -24,7 +26,7 @@
             <h3 class="mt-5 mb-3">Total vendido em {{ $p->format("m/Y") }}: {{ number_format($t->TotalMes, 2, ',', '.') }} Litros</h3>
             @endforeach
         @endforeach
-        
+
         <h5 class="mt-5 mb-3">Quantidade total de cidades atendidas no período {{ $cidades }}</h5>
         <h5 class="mb-3">Quantidade total de clientes atendidos no período {{ $clientes }}</h5>
 </div>

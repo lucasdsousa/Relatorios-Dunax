@@ -10,13 +10,15 @@
         @foreach($period as $p)
             @php
                 $totais = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalMes')
-                                                ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
-                                                ->whereRaw('dw_dunax.Situacao <> "Cancelado" 
-                                                                    and dw_dunax.Objeto not regexp "Arla" 
-                                                                    and dw_dunax.Objeto not regexp "Freio" 
-                                                                    and dw_dunax.Objeto not regexp "Aditivo" 
-                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") .'"')
-                                                ->get();
+                                                ->whereRaw('Situacao <> "Cancelado" 
+                                                                    and Objeto not regexp "Arla" 
+                                                                    and Objeto not regexp "Freio" 
+                                                                    and Objeto not regexp "Aditivo"
+                                                                    and Cliente not regexp "DULUB"
+                                                                    and Cliente not regexp "DUNAX"
+                                                                    and TipoDeOperacao not regexp "Devol")
+                                                ->whereBetween('Data', [$dataI_minus1, $dataF_plus1])
+                                                ->value('TotalMes');
             @endphp
 
             @foreach($totais as $t)
