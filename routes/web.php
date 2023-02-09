@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [RelatorioController::class, 'index']);
-Route::get('/Personalizado', [RelatorioController::class, 'personalizado']);
+//Route::get('/', [RelatorioController::class, 'index']);
+Route::get('/', [RelatorioController::class, 'personalizado']);
 Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa']);
 Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado']);
 Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao']);

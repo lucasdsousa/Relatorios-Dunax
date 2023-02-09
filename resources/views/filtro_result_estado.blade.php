@@ -7,30 +7,11 @@
 </div>
 
 <div>
-        @foreach($period as $p)
-            @php
-                $totais = DB::table('dw_dunax')->join('populacao', 'dw_dunax.IBGEEstado', '=', 'populacao.cod_uf')
-                                                ->selectRaw('sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalMes')
-                                                ->whereRaw('dw_dunax.Situacao <> "Cancelado" 
-                                                                    and dw_dunax.Objeto not regexp "Arla" 
-                                                                    and dw_dunax.Objeto not regexp "Freio" 
-                                                                    and dw_dunax.Objeto not regexp "Aditivo"
-                                                                    and dw_dunax.Cliente not regexp "DULUB"
-                                                                    and dw_dunax.Cliente not regexp "DUNAX" 
-                                                                    and dw_dunax.TipoDeOperacao not regexp "Devol"
-                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") . '"')                                              
-                                                ->where('dw_dunax.Estado', '=', $estado)
-                                                ->get();
-                
-            @endphp
 
-            @foreach($totais as $t)
-            <h3 class="mt-5 mb-3">Total vendido em {{ $p->format("m/Y") }}: {{ number_format($t->TotalMes, 2, ',', '.') }} Litros</h3>
-            
-            @endforeach
-        @endforeach
+        <h3 class="mt-5 mb-3">Total vendido em {{ $periodo }}:  {{ $total_vendido }}Litros</h3>
+
         
-        <h5 class="mt-5 mb-3">Quantidade de cidades atendidas em  {{ $estado }}: {{ $cidades }} / {{ $cidadesEstado }} = {{ round(($cidades / $cidadesEstado) * 100, 2) }}%</h5>
+        <h5 class="mt-5 mb-3">Porcentagem de cidades atendidas em  {{ $estado }}: {{ $cidades }} / {{ $cidadesEstado }} = <strong>{{ round(($cidades / $cidadesEstado) * 100, 2) }}%</strong></h5>
         <h5 class="mb-3">Quantidade de clientes atendidos em {{ $estado }}: {{ $clientes }}</h5>
 </div>
 
@@ -43,6 +24,8 @@
             <th scope="col">Cidade</th>
             <th scope="col">Clientes</th>
             <th scope="col">Total Vendido</th>
+            <th scope="col">População Estimada</th>
+            <th scope="col">Meta Clientes 2023</th>
         </thead>
         <tbody>
                 @foreach($data as $d)
@@ -52,7 +35,10 @@
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
                     <td>{{number_format($d->TotalVendido, 2, ',', '.')}} L</td>
+                    <td>{{number_format($d->populacao_estimada, 0, ',', '.')}}</td>
+                    <td>280</td>
                 @endforeach
+            </tr>
         </tbody>
     </table>
 </div>

@@ -18,8 +18,8 @@
                                                                     and dw_dunax.Cliente not regexp "DULUB"
                                                                     and dw_dunax.Cliente not regexp "DUNAX"
                                                                     and TipoDeOperacao not regexp "Devol"
-                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") . '"'')
-                                                ->whereBetween('Data', [$dataI_minus1, $dataF_plus1])                                                
+                                                                    and dw_dunax.Data regexp "'. $p->format("Y-m") . '"')
+                                                ->whereBetween('Data', [$dataI, $dataF])                                                
                                                 ->where('dw_dunax.Empresa', '=', $empresa)
                                                 ->get();
             @endphp
