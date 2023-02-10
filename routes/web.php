@@ -19,4 +19,5 @@ Route::get('/', [RelatorioController::class, 'personalizado']);
 Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa']);
 Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado']);
 Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao']);
-Route::get('/Filtrar', [RelatorioController::class, 'filtrar']);
+Route::get('/Filtrar', [RelatorioController::class, 'filtrar_de_vdd']);
+//Route::get('/Filtrar', [RelatorioController::class, 'filtrar']);

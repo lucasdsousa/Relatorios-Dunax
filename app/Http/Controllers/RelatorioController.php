@@ -335,7 +335,7 @@ class RelatorioController extends Controller
         $periodo = $request->input('periodo');
         //$periodo_minus1 = date('Y-m', strtotime($periodo . ' -1 months'));
         $periodo_minus2 = date('Y-m-d', strtotime($periodo . ' -2 months'));
-        $periodo_tratado = date('Y-m-d', strtotime($periodo));
+        $periodo_date = date('Y-m-d', strtotime($periodo));
         //dd($periodo_minus2);
 
         $data = DB::table('dw_dunax')
@@ -396,13 +396,118 @@ class RelatorioController extends Controller
                                                             and dw_dunax.Objeto not regexp "Aditivo"
                                                             and dw_dunax.Cliente not regexp "DULUB"
                                                             and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol"')
-                    ->whereBetween('dw_dunax.Data', [$periodo_minus2, $periodo_tratado])
+                    ->whereBetween('dw_dunax.Data', [$periodo_minus2, $periodo_date])
+                    ->groupBy('IBGECidade')
                     ->value('Clientes');
             //dd($clientes_ativos);
 
         $total_vendido = DB::table('dw_dunax')->selectRaw('sum(Quantidade * Volumes) as TotalVendido')->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])->first();
 
 
-        return view('filtro_result_empresa', compact('empresa', 'periodo', 'cidades', 'clientes', 'dataI', 'dataF', 'data', 'period', 'total_vendido'));
+        return view('filtro_result_empresa', compact('empresa', 'periodo', 'cidades', 'clientes', 'clientes_ativos', 'dataI', 'dataF', 'data', 'period', 'total_vendido'));
+    }
+
+    public function filtrar_de_vdd(Request $request)
+    {
+        $empresa = $request->input('empresa');
+        $estado = $request->input('estado');
+
+        //$periodo_minus1 = date('Y-m', strtotime($periodo . ' -1 months'));
+        $periodo = $request->input('periodo');
+        $periodo_minus2 = date('Y-m-d', strtotime($periodo . ' -2 months'));
+        $periodo_date = date('Y-m-d', strtotime($periodo));
+        $mes = date('d/m/Y', strtotime($periodo));
+
+        if($estado == 0 && $empresa != 0) {
+
+            $data = DB::table('dw_dunax')
+            ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+            ->selectRaw('populacao.regiao, dw_dunax.Estado, dw_dunax.Empresa, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, populacao.populacao_estimada')
+            ->where('Empresa', '=', $empresa)
+            ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo" and dw_dunax.Situacao <> "Cancelado" and dw_dunax.Cliente not regexp "DULUB" and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol" and dw_dunax.Data regexp "' . $periodo . '"')
+            //->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
+            ->groupBy('dw_dunax.Cidade')
+            ->orderBy('Clientes', 'desc')
+            ->get();
+
+            $clientes_ativos = DB::table('dw_dunax')
+                    ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+                    ->selectRaw('count(distinct dw_dunax.Cliente) as Clientes')
+                    ->whereRaw('dw_dunax.Situacao <> "Cancelado"
+                                                            and dw_dunax.Empresa = "' . $empresa . '"
+                                                            and dw_dunax.Objeto not regexp "Arla" 
+                                                            and dw_dunax.Objeto not regexp "Freio" 
+                                                            and dw_dunax.Objeto not regexp "Aditivo"
+                                                            and dw_dunax.Cliente not regexp "DULUB"
+                                                            and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol"')
+                    ->whereBetween('dw_dunax.Data', [$periodo_minus2, $periodo_date])
+                    ->groupBy('IBGECidade')
+                    ->value('Clientes');
+
+            return view('filtro_result_empresa', compact('empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+        }
+        else if($empresa == 0 && $estado != 0) {
+
+            $data = DB::table('dw_dunax')
+            ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+            ->selectRaw('populacao.regiao, dw_dunax.Estado, dw_dunax.Empresa, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, populacao.populacao_estimada')
+            ->where('Estado', '=', $estado)
+            ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo" and dw_dunax.Situacao <> "Cancelado" and dw_dunax.Cliente not regexp "DULUB" and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol" and dw_dunax.Data regexp "' . $periodo . '"')
+            //->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
+            ->groupBy('dw_dunax.Cidade')
+            ->orderBy('Clientes', 'desc')
+            ->get();
+
+            $clientes_ativos = DB::table('dw_dunax')
+                    ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+                    ->selectRaw('count(distinct dw_dunax.Cliente) as Clientes')
+                    ->whereRaw('dw_dunax.Situacao <> "Cancelado"
+                                                            and dw_dunax.Estado = "' . $estado . '"
+                                                            and dw_dunax.Objeto not regexp "Arla" 
+                                                            and dw_dunax.Objeto not regexp "Freio" 
+                                                            and dw_dunax.Objeto not regexp "Aditivo"
+                                                            and dw_dunax.Cliente not regexp "DULUB"
+                                                            and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol"')
+                    ->whereBetween('dw_dunax.Data', [$periodo_minus2, $periodo_date])
+                    ->groupBy('IBGECidade')
+                    ->value('Clientes');
+                    
+            return view('filtro_result_estado', compact('empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+
+        }
+        else if($empresa != 0 && $estado != 0) {
+
+            $data = DB::table('dw_dunax')
+            ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+            ->selectRaw('populacao.regiao, dw_dunax.Estado, dw_dunax.Empresa, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, populacao.populacao_estimada')
+            ->where('Estado', '=', $estado)
+            ->where('Empresa', '=', $empresa)
+            ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo" and dw_dunax.Situacao <> "Cancelado" and dw_dunax.Cliente not regexp "DULUB" and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol" and dw_dunax.Data regexp "' . $periodo . '"')
+            //->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
+            ->groupBy('dw_dunax.Cidade')
+            ->orderBy('Clientes', 'desc')
+            ->get();
+
+            $clientes_ativos = DB::table('dw_dunax')
+                    ->join('populacao', 'dw_dunax.IBGECidade', '=', 'populacao.cod_municipio')
+                    ->selectRaw('count(distinct dw_dunax.Cliente) as Clientes')
+                    ->whereRaw('dw_dunax.Situacao <> "Cancelado"
+                                                            and dw_dunax.Estado = "' . $estado . '"
+                                                            and dw_dunax.Empresa = "' . $empresa . '"
+                                                            and dw_dunax.Objeto not regexp "Arla" 
+                                                            and dw_dunax.Objeto not regexp "Freio" 
+                                                            and dw_dunax.Objeto not regexp "Aditivo"
+                                                            and dw_dunax.Cliente not regexp "DULUB"
+                                                            and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol"')
+                    ->whereBetween('dw_dunax.Data', [$periodo_minus2, $periodo_date])
+                    ->groupBy('IBGECidade')
+                    ->value('Clientes');
+
+            return view('filtro_result', compact('empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+
+        }
+        else {
+            return view('index');
+        }
     }
 }

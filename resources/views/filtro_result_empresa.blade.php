@@ -13,22 +13,24 @@
         <thead>
             <tr>
             <th scope="col">Periodo</th>
-            <th scope="col">Regiao</th>
             <th scope="col">Estado</th>
             <th scope="col">Cidade</th>
-            <th scope="col">Clientes</th>
+            <th scope="col">Clientes no Mes</th>
+            <th scope="col">Clientes Ativos</th>
             <th scope="col">Total Vendido</th>
+            <th scope="col">Meta Clientes 2023</th>
             <th scope="col">Empresa</th>
         </thead>
         <tbody>
                 @foreach($data as $d)
             <tr>
-                    <td>{{$periodo}}</td>
-                    <td>{{$d->regiao}}</td>
+                    <td>{{$mes}}</td>
                     <td>{{$d->Estado}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
+                    <td>{{$clientes_ativos}}</td>
                     <td>{{number_format($d->TotalVendido, 2, ',', '.')}} L</td>
+                    <td>280</td>
                     <td>{{$d->Empresa}}</td>
                 @endforeach
         </tbody>

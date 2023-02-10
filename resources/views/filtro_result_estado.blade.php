@@ -12,7 +12,6 @@
         <thead>
             <tr>
             <th scope="col">Periodo</th>
-            <th scope="col">Regiao</th>
             <th scope="col">Estado</th>
             <th scope="col">Cidade</th>
             <th scope="col">Clientes</th>
@@ -23,8 +22,7 @@
         <tbody>
                 @foreach($data as $d)
             <tr>
-                    <td>{{$periodo}}</td>
-                    <td>{{$d->regiao}}</td>
+                    <td>{{$mes}}</td>
                     <td>{{$d->Estado}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
