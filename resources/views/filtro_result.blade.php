@@ -8,12 +8,19 @@
 
 <div>
     <table class="table">
-        <thead>
             <tr>
-            <th scope="col">Regiao</th>
+            <th scope="col">Periodo</th>
+            <th scope="col">Empresa</th>
             <th scope="col">Estado</th>
             <th scope="col">Cidade</th>
-            <th scope="col">Clientes</th>
+            <th scope="col">Clientes Faturados</th>
+            <th scope="col">Clientes Ativos</th>
+            <th scope="col">Total Vendido</th>
+            <th scope="col">Meta Clientes por Cidade</th><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
+            <th scope="col">Meta Clientes por Estado</th>
+            <th scope="col">% população por estado</th><!-- aqui é calculado "porcentagem de população da cidade por estado" calculando população por cidade dividido por população por estado vezes 100 -->
+            <th scope="col">Meta LT por Cidade</th><!-- aqui é calculado "Meta LT por Cidade" calculando "Meta de Lt por Estado multiplicado" por "% população por estado" dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
+            <th scope="col">Meta LT por Estado</th>
         </thead>
         <tbody>
                 @foreach($data as $d)
