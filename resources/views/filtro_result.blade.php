@@ -18,17 +18,29 @@
             <th scope="col">Total Vendido</th>
             <th scope="col">Meta Clientes por Cidade</th><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
             <th scope="col">Meta Clientes por Estado</th>
-            <th scope="col">% população por estado</th><!-- aqui é calculado "porcentagem de população da cidade por estado" calculando população por cidade dividido por população por estado vezes 100 -->
-            <th scope="col">Meta LT por Cidade</th><!-- aqui é calculado "Meta LT por Cidade" calculando "Meta de Lt por Estado multiplicado" por "% população por estado" dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
+            <th scope="col">% População Por Estado</th><!-- aqui é calculado "porcentagem de população da cidade por estado" calculando população por cidade dividido por população por estado vezes 100 -->
+            <th scope="col">Meta LT por Cidade</th><!-- aqui é calculado  "Meta de Lt por Estado" multiplicado por "% população por estado", isto dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
             <th scope="col">Meta LT por Estado</th>
         </thead>
         <tbody>
                 @foreach($data as $d)
             <tr>
-                    <td>{{$d->regiao}}</td>
+                    <td>{{$mes}}</td>
+                    <td>{{$empresa}}</td>
                     <td>{{$d->Estado}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
+                    <td>{{$clientes_ativos}}</td>
+                    <td>{{$d->TotalVendido}} Litros</td>
+                    <td>280</td>
+                    <td>280</td>
+                    <td>{{$d->perc_estado_2022}}</td>
+                    <td>null</td>
+                    @if($mes == "01/2023")
+                        <td>{{$jan_2023}} Litros</td>
+                    @else
+                        <td>0</td>
+                    @endif
                 @endforeach
         </tbody>
     </table>
