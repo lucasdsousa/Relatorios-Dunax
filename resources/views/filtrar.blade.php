@@ -67,7 +67,7 @@
             <option value="2022-12">Dezembro/22</option>
             
             <!-- 2023 -->
-            <option value="2022-01">Janeiro/23</option>
+            <option value="2023-01">Janeiro/23</option>
             <option value="2023-02">Fevereiro/23</option>
             <!-- <option value="2023-03">Março/23</option>
             <option value="2023-04">Abril/23</option>
