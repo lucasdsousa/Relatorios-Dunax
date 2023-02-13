@@ -26,11 +26,21 @@
 
                 @foreach($data as $d)
             <tr>
+            <td>{{$mes}}</td>
+                    <td>{{$d->Empresa}}</td>
                     <td>{{$mes}}</td>
                     <td>{{$empresa}}</td>
                     <td>{{$d->Estado}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{$d->Clientes}}</td>
+                    <td>{{$clientes_ativos}}</td>
+                    <td>{{number_format($d->TotalVendido, 2, ',', '.')}} L</td>
+                    <td>{{number_format($d->ClientesCidade, 2, ',', '.')}} L</td><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
+                    <td>280</td>
+                    <td>{{$d->perc_cidade_2022}}</td><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
+                    <td>{{number_format($d->MetaLTCidade, 2, ',', '.')}} L</td><!-- aqui é calculado "Meta LT por Cidade" calculando "Meta de Lt por Estado multiplicado" por "% população por estado" dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
+                    <td>{{$jan_2023}}</td>
+                    
                     <td>{{$clientes_ativos}}</td>
                     <td>{{$d->TotalVendido}} Litros</td>
                     <td>280</td>

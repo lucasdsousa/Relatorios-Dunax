@@ -6,7 +6,7 @@
     @csrf
 
     <div class="row container mt-5">
-        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
+        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Atualizar</a>
     </div>
 
     <div>
