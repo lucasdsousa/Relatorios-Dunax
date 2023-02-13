@@ -437,6 +437,19 @@ class RelatorioController extends Controller
             $pop_cidade = DB::table('populacao_att')->select('pop_cidade_2022')->groupBy('cod_municipio')->value('pop_cidade_2022');
             $pop_estado = DB::table('populacao_att')->select('pop_estado_2022')->groupBy('cod_uf')->value('pop_estado_2022');
 
+            /* $jan_2023 = DB::table('metas_2023')->select('jan_23')->where('estado', '=', $estado)->value('jan_23');
+            $fev_2023 = DB::table('metas_2023')->select('fev_23')->where('estado', '=', $estado)->value('fev_23');
+            $mar_2023 = DB::table('metas_2023')->select('mar_23')->where('estado', '=', $estado)->value('mar_23');
+            $abr_2023 = DB::table('metas_2023')->select('abr_23')->where('estado', '=', $estado)->value('abr_23');
+            $mai_2023 = DB::table('metas_2023')->select('mai_23')->where('estado', '=', $estado)->value('mai_23');
+            $jun_2023 = DB::table('metas_2023')->select('jun_23')->where('estado', '=', $estado)->value('jun_23');
+            $jul_2023 = DB::table('metas_2023')->select('jul_23')->where('estado', '=', $estado)->value('jul_23');
+            $ago_2023 = DB::table('metas_2023')->select('ago_23')->where('estado', '=', $estado)->value('ago_23');
+            $set_2023 = DB::table('metas_2023')->select('set_23')->where('estado', '=', $estado)->value('set_23');
+            $out_2023 = DB::table('metas_2023')->select('jan_23')->where('estado', '=', $estado)->value('out_23');
+            $nov_2023 = DB::table('metas_2023')->select('nov_23')->where('estado', '=', $estado)->value('nov_23');
+            $dez_2023 = DB::table('metas_2023')->select('dez_23')->where('estado', '=', $estado)->value('dez_23'); */
+
 
             $clientes_ativos = DB::table('dw_dunax')
                 ->join('populacao_att', 'dw_dunax.IBGECidade', '=', 'populacao_att.cod_municipio')
@@ -452,7 +465,7 @@ class RelatorioController extends Controller
                 ->groupBy('IBGECidade')
                 ->value('Clientes');
 
-            return view('filtro_result_empresa', compact('periodo', 'pop', 'pop_cidade', 'pop_estado', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+            return view('filtro_result', compact('periodo', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
         } else if ($empresa == 0 && $estado != 0) {
 
             $data = DB::table('dw_dunax')
@@ -498,7 +511,7 @@ class RelatorioController extends Controller
                 return view('filtro_result_estado', compact('jan_2023', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
             } */
             //dd(substr($periodo, 0, 4));
-            return view('filtro_result_estado', compact('periodo', 'jan_2023', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+            return view('filtro_result', compact('jan_2023', 'periodo', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
         } else if ($empresa != 0 && $estado != 0) {
 
             $data = DB::table('dw_dunax')
