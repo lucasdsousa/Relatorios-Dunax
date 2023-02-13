@@ -29,18 +29,20 @@
             <label for="periodo" class="form-label">Escolha o Mês</label>
             <select name="periodo" class="form-select">
             <option selected value="0">Selecione...</option>
-            <option value="2021-01">Janeiro-21</option>
-            <option value="2021-02">Fevereiro-21</option>
-            <option value="2021-03">Março-21</option>
-            <option value="2021-04">Abril-21</option>
-            <option value="2021-05">Maio-21</option>
-            <option value="2021-06">Junho-21</option>
-            <option value="2021-07">Julho-21</option>
-            <option value="2021-08">Agosto-21</option>
-            <option value="2021-09">Setembro-21</option>
-            <option value="2021-10">Outubro-21</option>
-            <option value="2021-11">Novembro-21</option>
-            <option value="2021-12">Dezembro-21</option>
+
+            <!-- 2021 -->
+            <option value="2021-01">Janeiro/21</option>
+            <option value="2021-02">Fevereiro/21</option>
+            <option value="2021-03">Março/21</option>
+            <option value="2021-04">Abril/21</option>
+            <option value="2021-05">Maio/21</option>
+            <option value="2021-06">Junho/21</option>
+            <option value="2021-07">Julho/21</option>
+            <option value="2021-08">Agosto/21</option>
+            <option value="2021-09">Setembro/21</option>
+            <option value="2021-10">Outubro/21</option>
+            <option value="2021-11">Novembro/21</option>
+            <option value="2021-12">Dezembro/21</option>
            <!-- </select>
         </div>
         
@@ -49,19 +51,34 @@
             <select name="periodo[]" class="form-select">
             <option selected value="0">Selecione...</option>
             -->
-            <option value="2022-01">Janeiro-22</option>
-            <option value="2022-02">Fevereiro-22</option>
-            <option value="2022-03">Março-22</option>
-            <option value="2022-04">Abril-22</option>
-            <option value="2022-05">Maio-22</option>
-            <option value="2022-06">Junho-22</option>
-            <option value="2022-07">Julho-22</option>
-            <option value="2022-08">Agosto-22</option>
-            <option value="2022-09">Setembro-22</option>
-            <option value="2022-10">Outubro-22</option>
-            <option value="2022-11">Novembro-22</option>
-            <option value="2022-12">Dezembro-22</option>
-            <option value="2023-01">Janeiro-23</option>    
+            
+            <!-- 2022 -->
+            <option value="2022-01">Janeiro/22</option>
+            <option value="2022-02">Fevereiro/22</option>
+            <option value="2022-03">Março/22</option>
+            <option value="2022-04">Abril/22</option>
+            <option value="2022-05">Maio/22</option>
+            <option value="2022-06">Junho/22</option>
+            <option value="2022-07">Julho/22</option>
+            <option value="2022-08">Agosto/22</option>
+            <option value="2022-09">Setembro/22</option>
+            <option value="2022-10">Outubro/22</option>
+            <option value="2022-11">Novembro/22</option>
+            <option value="2022-12">Dezembro/22</option>
+            
+            <!-- 2023 -->
+            <option value="2022-01">Janeiro/23</option>
+            <option value="2023-02">Fevereiro/23</option>
+            <!-- <option value="2023-03">Março/23</option>
+            <option value="2023-04">Abril/23</option>
+            <option value="2023-05">Maio/23</option>
+            <option value="2023-06">Junho/23</option>
+            <option value="2023-07">Julho/23</option>
+            <option value="2023-08">Agosto/23</option>
+            <option value="2023-09">Setembro/23</option>
+            <option value="2023-10">Outubro/23</option>
+            <option value="2023-11">Novembro/23</option>
+            <option value="2023-12">Dezembro/23</option> -->
         </select>
         </div>
         <!--
