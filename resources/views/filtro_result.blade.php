@@ -12,6 +12,17 @@
   
 
 <style>
+body {
+          background-image: url(https://www.dulub.com.br/images/Logo%20Dunax%20H.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-color: rgba(255, 255, 255, 0.5);
+          background-position-x: right;
+          background-position-y: top;
+          background-size: 40%;
+      }
+
   table {
     border-collapse: collapse;
     width: 100%;
@@ -254,8 +265,8 @@
     <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
 </div>
 
-<div>
-            <h3>    Dunax </h3>
-        </div>
+    <div>
+       <h3>    Dunax </h3>
+     </div>
 
 @endsection

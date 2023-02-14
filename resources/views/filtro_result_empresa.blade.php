@@ -20,6 +20,7 @@
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+  
 </style>
 
 <div class="container">
