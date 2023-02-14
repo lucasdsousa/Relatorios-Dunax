@@ -2,8 +2,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
-
 <form method="GET" enctype="multipart/form-data">
     @csrf
 
@@ -18,7 +16,7 @@
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-color: rgba(255, 255, 255, 0.5);
-          background-size:  55%;
+          background-size:  35%;
           background-position-x: center;
           background-position-y: bottom;
           
@@ -149,14 +147,14 @@ h4 {
         <!-- <div class="col-md-2">
             <label for="dataInicial" class="form-label">Data Inicial</label>
             <input type="date" class="form-control" name="dataInicial" id="dataInicial" required>
-=======
+
 <div class="container text-center">
     <form method="GET" enctype="multipart/form-data">
         @csrf
 
         <div class="row container mt-5">
             <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Atualizar</a>
->>>>>>> 5818cf2027d0964ff2e9d352be900797cc601983
+
         </div>
 
         <div>
@@ -166,7 +164,7 @@ h4 {
         <div class="container text-center">
             <div class="row container mt-5 align-items-center">
 
-                    <!-- <div class="col-md-2">
+                     <div class="col-md-2">
                         <label for="dataInicial" class="form-label">Data Inicial</label>
                         <input type="date" class="form-control" name="dataInicial" id="dataInicial" required>
                     </div>
@@ -243,9 +241,8 @@ h4 {
                         </select>
                     </div>
             -->
-<<<<<<< HEAD
             
-            <!-- 2022 -->
+            <!-- 2022 
             <option value="2022-01">Janeiro/22</option>
             <option value="2022-02">Fevereiro/22</option>
             <option value="2022-03">Março/22</option>
@@ -259,7 +256,7 @@ h4 {
             <option value="2022-11">Novembro/22</option>
             <option value="2022-12">Dezembro/22</option>
             
-            <!-- 2023 -->
+            <!-- 2023 
             <option value="2022-01">Janeiro/23</option>
             <option value="2023-02">Fevereiro/23</option>
             <!-- <option value="2023-03">Março/23</option>
@@ -271,9 +268,9 @@ h4 {
             <option value="2023-09">Setembro/23</option>
             <option value="2023-10">Outubro/23</option>
             <option value="2023-11">Novembro/23</option>
-            <option value="2023-12">Dezembro/23</option> -->
+            <option value="2023-12">Dezembro/23</option> 
         </select>
-        </div>
+        </div>-->
         <!--
         <div class="col-md-2" id="regiao">
             <label for="regiao" class="form-label">Região</label>
@@ -293,18 +290,6 @@ h4 {
                 @foreach($regN as $n)
                     <option class="N">{{ $n->uf }}</option>
                 @endforeach
-=======
-
-                    
-                    
-            <!--
-                    <div class="col-md-2" id="estado">
-                        <label for="estado" class="form-label">Estado</label>
-                        <select name="estado" class="form-select">
-                            @foreach($regN as $n)
-                                <option class="N">{{ $n->uf }}</option>
-                            @endforeach
->>>>>>> 5818cf2027d0964ff2e9d352be900797cc601983
 
                             @foreach($regNE as $ne)
                                 <option class="NE">{{ $ne->uf }}</option>
@@ -318,7 +303,6 @@ h4 {
                                 <option class="SD">{{ $sd->uf }}</option>
                             @endforeach
 
-<<<<<<< HEAD
                 @foreach($regS as $s)
                     <option class="S">{{ $s->uf }}</option>
                 @endforeach
@@ -370,79 +354,16 @@ h4 {
         
     </div>
 </form>
-=======
-                            @foreach($regS as $s)
-                                <option class="S">{{ $s->uf }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-            -->
-                    
-                    <div class="col-md-2" id="empresa">
-                        <label for="empresa" class="form-label">Empresa</label>
-                        <select name="empresa" class="form-select">
-                            <option selected value="0">Selecione...</option>
-                            @foreach($empresas as $e)
-                                <option value="{{ $e->Empresa }}">{{ $e->Empresa}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-md-2" id="estado">
-                        <label for="estado" class="form-label">Estado</label>
-                        <select name="estado" class="form-select">
-                            <option selected value="0">Selecione...</option>
-                            <option value="AC">Acre</option>
-                            <option value="AL">Alagoas</option>
-                            <option value="AP">Amapá</option>
-                            <option value="AM">Amazonas</option>
-                            <option value="BA">Bahia</option>
-                            <option value="CE">Ceará</option>
-                            <option value="ES">Espírito Santo</option>
-                            <option value="GO">Goiás</option>
-                            <option value="MA">Maranhão</option>
-                            <option value="MT">Mato Grosso</option>
-                            <option value="MS">Mato Grosso do Sul</option>
-                            <option value="MG">Minas Gerais</option>
-                            <option value="PA">Pará</option>
-                            <option value="PB">Paraíba</option>
-                            <option value="PR">Paraná</option>
-                            <option value="PE">Pernambuco</option>
-                            <option value="PI">Piauí</option>
-                            <option value="RJ">Rio de Janeiro</option>
-                            <option value="RN">Rio Grande do Norte</option>
-                            <option value="RS">Rio Grande do Sul</option>
-                            <option value="RO">Rondônia</option>
-                            <option value="RR">Roraima</option>
-                            <option value="SC">Santa Catarina</option>
-                            <option value="SP">São Paulo</option>
-                            <option value="SE">Sergipe</option>
-                            <option value="TO">Tocantins</option>
-                        </select>
-                    </div>
-
-
-                    <div class="col-1 mt-3">
-                        <!-- <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> -->
-                        <!-- <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button> -->
-                        <!-- <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button> -->
-                        <button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button>
-                    </div> 
-            </div>
-        </div>       
-    </form>
-</div>
->>>>>>> 5818cf2027d0964ff2e9d352be900797cc601983
 
   <!-- <div class="col-1 mt-3 center-button" style="width:36%; margin-right: 30%; margin-left: 30%; auto;"> -->
   <div class="mt-5 d-flex justify-content-center align-items-center mb-3">
   <button type="submit" id="empresa" class="btn btn-danger text-white mx-3 center-button" style="width: 70%; margin: 0 auto;" formaction="/Filtrar">Filtrar</button>
 
-  <!--<div class="col-1 mt-3 center">
-                     <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> -->
-                    <!-- <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button> -->
-                    <!-- <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button>
-                    <button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button> 
+   <!--<div class="col-1 mt-3 center">
+                     <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> 
+                    <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button> -->
+                    <!-- <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button>-->
+                    <!--<button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button> 
                 </div>-->
 </div>
 
