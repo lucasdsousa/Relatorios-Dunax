@@ -87,7 +87,10 @@ body {
           <thead class='table-dark'>
             <tr>
             <th scope="col">Periodo</th>
-            <th scope="col">Empresa</th>
+            @if($empresa != 0)
+                <th scope="col">Empresa</th>
+            @else
+            @endif
             <th scope="col">Estado</th>
             <th scope="col">Cidade</th>
             <th scope="col">População Cidade</th>
@@ -107,7 +110,7 @@ body {
                     <tr>
                     <td>{{$mes}}</td>
                     @if($empresa != 0)
-                    <td>{{$d->Empresa}}</td>
+                        <td>{{$d->Empresa}}</td>
                     @else
                     @endif
                     <td>{{$d->Estado}}</td>
