@@ -95,6 +95,8 @@ body {
             <th scope="col">Total Vendido</th>
             <th scope="col">Meta Clientes por Cidade</th><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
             <th scope="col">Meta Clientes por Estado</th>
+            <th scope="col">População Cidade</th>
+            <th scope="col">População Estado</th>
             <th scope="col">% População Por Estado</th><!-- aqui é calculado "porcentagem de população da cidade por estado" calculando população por cidade dividido por população por estado vezes 100 -->
             <th scope="col">Meta LT por Cidade</th><!-- aqui é calculado  "Meta de Lt por Estado" multiplicado por "% população por estado", isto dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
             <th scope="col">Meta LT por Estado</th>
@@ -120,6 +122,8 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
@@ -131,9 +135,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "03/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('mar_23')->where('estado', '=', $d->Estado)->value('mar_23');
@@ -142,9 +148,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "04/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('abr_23')->where('estado', '=', $d->Estado)->value('abr_23');
@@ -153,9 +161,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "05/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('mai_23')->where('estado', '=', $d->Estado)->value('mai_23');
@@ -164,9 +174,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "06/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('jun_23')->where('estado', '=', $d->Estado)->value('jun_23');
@@ -175,9 +187,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "07/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('jul_23')->where('estado', '=', $d->Estado)->value('jul_23');
@@ -186,9 +200,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "08/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('ago_23')->where('estado', '=', $d->Estado)->value('ago_23');
@@ -197,9 +213,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "09/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('set_23')->where('estado', '=', $d->Estado)->value('set_23');
@@ -208,9 +226,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "10/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('out_23')->where('estado', '=', $d->Estado)->value('out_23');
@@ -219,9 +239,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "11/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('nov_23')->where('estado', '=', $d->Estado)->value('nov_23');
@@ -230,9 +252,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "12/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('dez_23')->where('estado', '=', $d->Estado)->value('dez_23');
@@ -241,9 +265,11 @@ body {
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
+                        <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
+                        <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
-                        <td>{{$meta_estado_2023}} Litros</td>
+                        <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @else
                         <td>0</td>
                         <td>280</td>

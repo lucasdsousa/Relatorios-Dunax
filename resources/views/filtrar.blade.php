@@ -142,6 +142,8 @@ h4 {
     <div class="row container mt-5 text-center" style="width:100%; margin-right: 30%; margin-left: 30%; auto; margin: 0 auto;">
     <div class="d-flex justify-content-between align-items-center mb-3">-->
     <div class="mt-7 d-flex justify-content-center align-items-center mb-3">
+      <form method="GET" enctype="multipart/form-data">
+          @csrf
 
 
         <!-- <div class="col-md-2">
@@ -149,8 +151,6 @@ h4 {
             <input type="date" class="form-control" name="dataInicial" id="dataInicial" required>
 
 <div class="container text-center">
-    <form method="GET" enctype="multipart/form-data">
-        @csrf
 
         <div class="row container mt-5">
             <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Atualizar</a>
@@ -353,7 +353,6 @@ h4 {
         </div>
         
     </div>
-</form>
 
   <!-- <div class="col-1 mt-3 center-button" style="width:36%; margin-right: 30%; margin-left: 30%; auto;"> -->
   <div class="mt-5 d-flex justify-content-center align-items-center mb-3">
@@ -366,6 +365,7 @@ h4 {
                     <!--<button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button> 
                 </div>-->
 </div>
+</form>
 
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
