@@ -2,18 +2,148 @@
 
 @section('content')
 
+
 <form method="GET" enctype="multipart/form-data">
     @csrf
 
     <div class="row container mt-5">
-        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Atualizar</a>
+        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Limpar Filtro</a>
     </div>
 
-    <div>
-    <h3>    Favor preencher Empresa e/ou Estado</h3>
+    <style>
+  body {
+          background-image: url(https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-color: rgba(255, 255, 255, 0.5);
+          background-size:  55%;
+          background-position-x: center;
+          background-position-y: bottom;
+          
+      }
+      @media (min-width: 1200px) {
+  body {
+    background-size: 55%;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  body {
+    background-size: 45%;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  body {
+    background-size: 35%;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+  body {
+    background-size: 25%;
+  }
+}
+
+@media (max-width: 575px) and (min-width: 414px) {
+  body {
+    background-size: 15%;
+  }
+}
+
+@media (max-width: 413px) and (min-width: 375px) {
+  body {
+    background-size: 12%;
+  }
+}
+
+@media (max-width: 374px) and (min-width: 320px) {
+  body {
+    background-size: 10%;
+  }
+}
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;    
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  th {
+    border: 1px solid black;
+    background-color: black;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  h4, h3, h2, h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.center-button {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+  margin-left: 50px;
+}
+
+</style>
+
+    <div class="mt-7 mb-4">
+
+
+  <h2>Relatório de KPI's por Empresa e Estado</h2>
+  <h3>...Defina mês de referencia depois Empresa e/ou Estado</h3>
 </div>
 
-    <div class="row container mt-5">
+   <!-- <div class="row container mt-5 text-center width: 100%"> 
+    <div class="row container mt-5 text-center" style="width:100%; margin-right: 30%; margin-left: 30%; auto; margin: 0 auto;">
+    <div class="d-flex justify-content-between align-items-center mb-3">-->
+    <div class="mt-7 d-flex justify-content-center align-items-center mb-3">
+
 
         <!-- <div class="col-md-2">
             <label for="dataInicial" class="form-label">Data Inicial</label>
@@ -90,13 +220,11 @@
                 <option value="{{ $r->regiao }}">{{ $r->regiao }}</option>
             @endforeach
             </select>
-        </div>
--->
+        </div> -->
 
         
         
-<!--
-        <div class="col-md-2" id="estado">
+        <!--<div class="col-md-2" id="estado">
             <label for="estado" class="form-label">Estado</label>
             <select name="estado" class="form-select">
                 @foreach($regN as $n)
@@ -119,8 +247,7 @@
                     <option class="S">{{ $s->uf }}</option>
                 @endforeach
             </select>
-        </div>
--->
+        </div> -->
         
         <div class="col-md-2" id="empresa">
             <label for="empresa" class="form-label">Empresa</label>
@@ -164,16 +291,21 @@
             <option value="TO">Tocantins</option>
             </select>
         </div>
-
-
-        <div class="col-1 mt-3">
-            <!-- <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> -->
-            <!-- <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button> -->
-            <!-- <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button> -->
-            <button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button>
-        </div>
+        
     </div>
 </form>
+
+  <!-- <div class="col-1 mt-3 center-button" style="width:36%; margin-right: 30%; margin-left: 30%; auto;"> -->
+  <div class="mt-5 d-flex justify-content-center align-items-center mb-3">
+  <button type="submit" id="empresa" class="btn btn-danger text-white mx-3 center-button" style="width: 70%; margin: 0 auto;" formaction="/Filtrar">Filtrar</button>
+
+  <!--<div class="col-1 mt-3 center">
+                     <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> -->
+                    <!-- <button type="submit" id="regiao" class="btn btn-primary mx-3" formaction="/Filtrar-Regiao">Filtrar Região</button> -->
+                    <!-- <button type="submit" id="estado" class="btn btn-success mx-3" formaction="/Filtrar-Estado">Filtrar Estado</button>
+                    <button type="submit" id="empresa" class="btn btn-danger text-white mx-3" formaction="/Filtrar">Filtrar</button> 
+                </div>-->
+</div>
 
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
@@ -186,4 +318,9 @@
 
 </script> -->
 
+<div>
+            <h4>    Dunax </h4>
+      
+            </div>
+           
 @endsection
