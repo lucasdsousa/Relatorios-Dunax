@@ -124,7 +124,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "02/2023")
@@ -137,7 +137,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "03/2023")
@@ -150,7 +150,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "04/2023")
@@ -163,7 +163,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "05/2023")
@@ -176,7 +176,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "06/2023")
@@ -189,7 +189,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "07/2023")
@@ -202,7 +202,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "08/2023")
@@ -215,7 +215,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "09/2023")
@@ -228,7 +228,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "10/2023")
@@ -241,7 +241,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "11/2023")
@@ -254,7 +254,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @elseif($mes == "12/2023")
@@ -267,7 +267,7 @@ body {
                         <td>280</td>
                         <td>{{ number_format($d->pop_cidade_2022, 2, ',', '.') }}</td>
                         <td>{{ number_format($d->pop_estado_2022, 2, ',', '.') }}</td>
-                        <td>{{$d->perc_estado_2022}}</td>
+                        <td>{{ number_format($d->perc_estado_2022, 2, ',', '.') }}%</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
                         <td>{{ number_format($meta_estado_2023, 2, ',', '.') }} Litros</td>
                     @else
