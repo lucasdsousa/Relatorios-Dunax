@@ -107,7 +107,7 @@
                             $meta_lt_cidade = $meta_estado_2023 * ($d->perc_estado_2022 / 100);
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ round($meta_cliente_cidade, 0) }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -118,7 +118,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -129,7 +129,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -140,7 +140,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -151,7 +151,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -162,7 +162,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -173,7 +173,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -184,7 +184,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -195,7 +195,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -206,7 +206,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -217,7 +217,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
@@ -228,7 +228,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                         @endphp
-                        <td>{{ $meta_cliente_cidade }}</td>
+                        <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>280</td>
                         <td>{{$d->perc_estado_2022}}</td>
                         <td>{{ number_format($meta_lt_cidade, 2, ',', '.') }} Litros</td>
