@@ -106,7 +106,10 @@ body {
                 @foreach($data as $d)
                     <tr>
                     <td>{{$mes}}</td>
+                    @if($empresa != 0)
                     <td>{{$d->Empresa}}</td>
+                    @else
+                    @endif
                     <td>{{$d->Estado}}</td>
                     <td>{{$d->Cidade}}</td>
                     <td>{{ number_format($d->pop_cidade_2022, 0, ',', '.') }}</td>
