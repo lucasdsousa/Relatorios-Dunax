@@ -99,10 +99,12 @@ body {
             <th scope="col">Meta Clientes por Estado</th>
             <th scope="col">Meta Clientes por Cidade</th><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
             <th scope="col">Clientes Faturados</th>
+            <th scope="col">% Clientes Faturados</th> <!-- Clientes Faturados / Meta Clientes Cidade -->
             <th scope="col">Meta LT por Estado</th>
             <th scope="col">Meta LT por Cidade</th><!-- aqui é calculado  "Meta de Lt por Estado" multiplicado por "% população por estado", isto dividido por 100 (atenção ao arredondamento gerado pelas tabelas) -->
             <!-- <th scope="col">Clientes Ativos</th> -->
             <th scope="col">Total Vendido</th>
+            <th scope="col">% Litros Vendidos por Meta Cidade</th> <!-- Total Vendido / Meta Litros Cidade -->
         </thead>
         <tbody>
 
@@ -125,133 +127,181 @@ body {
                             $meta_estado_2023 = DB::table('metas_2023')->select('jan_23')->where('estado', '=', $d->Estado)->value('jan_23');
                             $meta_lt_cidade = $meta_estado_2023 * ($d->perc_estado_2022 / 100);
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "02/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('fev_23')->where('estado', '=', $d->Estado)->value('fev_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "03/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('mar_23')->where('estado', '=', $d->Estado)->value('mar_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "04/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('abr_23')->where('estado', '=', $d->Estado)->value('abr_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "05/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('mai_23')->where('estado', '=', $d->Estado)->value('mai_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "06/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('jun_23')->where('estado', '=', $d->Estado)->value('jun_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "07/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('jul_23')->where('estado', '=', $d->Estado)->value('jul_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "08/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('ago_23')->where('estado', '=', $d->Estado)->value('ago_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "09/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('set_23')->where('estado', '=', $d->Estado)->value('set_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "10/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('out_23')->where('estado', '=', $d->Estado)->value('out_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "11/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('nov_23')->where('estado', '=', $d->Estado)->value('nov_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @elseif($mes == "12/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('dez_23')->where('estado', '=', $d->Estado)->value('dez_23');
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
+                            $perc_clientes_faturados = $d->Clientes / $meta_cliente_cidade;
+                            $perc_vendas_cidade = $d->TotalVendido / $meta_lt_cidade;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
+                        <td>{{$perc_clientes_faturados}}%</td>
                         <td>{{ number_format(round($meta_estado_2023, 0), 0, ',', '.') }} Litros</td>
                         <td>{{ number_format(round($meta_lt_cidade, 0), 0, ',', '.') }} Litros</td>
-                        <td>{{number_format($d->TotalVendido, 0, ',', '.')}} Litros</td>
+                        <td>{{ number_format($d->TotalVendido, 0, ',', '.') }} Litros</td>
+                        <td>{{ number_format($perc_vendas_cidade) }}%</td>
                     @else
                         <td>0</td>
                         <td>280</td>
