@@ -473,6 +473,7 @@ class RelatorioController extends Controller
                 ->selectRaw('dw_dunax.Estado, dw_dunax.Empresa, dw_dunax.Cidade, count(distinct dw_dunax.Cliente) as Clientes, sum(dw_dunax.Quantidade * dw_dunax.Volumes) as TotalVendido, populacao_att.perc_estado_2022, populacao_att.pop_cidade_2022, populacao_att.pop_estado_2022')
                 ->where('Estado', '=', $estado)
                 ->where('populacao_att.uf', '=', $estado)
+                //->where('populacao_att.perc_estado_2022', '>', 0.0)
                 ->whereRaw('dw_dunax.Objeto not regexp "Arla" and dw_dunax.Objeto not regexp "Freio" and dw_dunax.Objeto not regexp "Aditivo" and dw_dunax.Situacao <> "Cancelado" and dw_dunax.Cliente not regexp "DULUB" and dw_dunax.Cliente not regexp "DUNAX" and dw_dunax.TipoDeOperacao not regexp "Devol" and dw_dunax.Data regexp "' . $periodo . '"')
                 //->whereBetween('dw_dunax.Data', [$dataI, $dataF_plus1])
                 ->groupBy('IBGECidade')
@@ -498,6 +499,7 @@ class RelatorioController extends Controller
             $clientes_ativos = DB::table('dw_dunax')
                 ->join('populacao_att', 'dw_dunax.IBGECidade', '=', 'populacao_att.cod_municipio')
                 ->selectRaw('count(distinct dw_dunax.Cliente) as Clientes')
+                //->where('populacao_att.perc_estado_2022', '>', 0.0)
                 ->whereRaw('dw_dunax.Situacao <> "Cancelado"
                                                             and dw_dunax.Estado = "' . $estado . '"
                                                             and dw_dunax.Objeto not regexp "Arla" 

@@ -96,7 +96,7 @@
             <th scope="col">População Cidade</th>
             <th scope="col">População Estado</th>
             <th scope="col">% População Por Estado</th><!-- aqui é calculado "porcentagem de população da cidade por estado" calculando população por cidade dividido por população por estado vezes 100 -->
-            <th scope="col">Meta Clientes por Estado</th>
+            <th scope="col">Média Consumo Lubrificantes por Estado</th>
             <th scope="col">Meta Clientes por Cidade</th><!-- aqui é calculado "Meta Clientes por Cidade" calculando "Meta LT por Cidade" dividido por "Meta Cliente por Estado" -->
             <th scope="col">Clientes Faturados</th>
             <th scope="col">% Clientes Faturados</th> <!-- Clientes Faturados / Meta Clientes Cidade -->
@@ -125,10 +125,17 @@
                     @if($mes == "01/2023")
                         @php
                             $meta_estado_2023 = DB::table('metas_2023')->select('jan_23')->where('estado', '=', $d->Estado)->value('jan_23');
-                            $meta_lt_cidade = $meta_estado_2023 * ($d->perc_estado_2022 / 100);
+                            
+                            if($d->perc_estado_2022 < 0.01) {
+                                $meta_lt_cidade = 24; //$meta_estado_2023 * ($d->perc_estado_2022 / 100);
+                            }
+                            else {
+                                $meta_lt_cidade = $meta_estado_2023 * ($d->perc_estado_2022 / 100);
+                            }
+
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -143,7 +150,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -158,7 +165,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -173,7 +180,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -188,7 +195,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -203,7 +210,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -218,7 +225,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -233,7 +240,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -248,7 +255,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -263,7 +270,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -278,7 +285,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
@@ -293,7 +300,7 @@
                             $meta_lt_cidade = ($meta_estado_2023 * $d->perc_estado_2022) / 100;
                             $meta_cliente_cidade = $meta_lt_cidade / 280;
                             $perc_clientes_faturados = ($d->Clientes / $meta_cliente_cidade) * 100;
-                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade * 100);
+                            $perc_vendas_cidade = ($d->TotalVendido / $meta_lt_cidade) * 100;
                         @endphp
                         <td>{{ ceil($meta_cliente_cidade) }}</td>
                         <td>{{$d->Clientes}}</td>
