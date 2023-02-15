@@ -180,7 +180,7 @@ h4 {
                             <option selected value="0">Selecione...</option>
 
                             <!-- 2021 -->
-                            <option value="2021-01">Janeiro/21</option>
+                            <!-- <option value="2021-01">Janeiro/21</option>
                             <option value="2021-02">Fevereiro/21</option>
                             <option value="2021-03">Março/21</option>
                             <option value="2021-04">Abril/21</option>
@@ -192,17 +192,17 @@ h4 {
                             <option value="2021-10">Outubro/21</option>
                             <option value="2021-11">Novembro/21</option>
                             <option value="2021-12">Dezembro/21</option>
-                        <!-- </select>
+                        </select>
                         </div>
                         
                         <div class="col-md-2" id="periodo">
                             <label for="periodo" class="form-label">2022</label>
                             <select name="periodo[]" class="form-select">
                             <option selected value="0">Selecione...</option>
-                            -->
+                            
                             
                             <!-- 2022 -->
-                            <option value="2022-01">Janeiro/22</option>
+                            <!-- <option value="2022-01">Janeiro/22</option>
                             <option value="2022-02">Fevereiro/22</option>
                             <option value="2022-03">Março/22</option>
                             <option value="2022-04">Abril/22</option>
@@ -213,7 +213,7 @@ h4 {
                             <option value="2022-09">Setembro/22</option>
                             <option value="2022-10">Outubro/22</option>
                             <option value="2022-11">Novembro/22</option>
-                            <option value="2022-12">Dezembro/22</option>
+                            <option value="2022-12">Dezembro/22</option> -->
                             
                             <!-- 2023 -->
                             <option value="2023-01">Janeiro/23</option>
