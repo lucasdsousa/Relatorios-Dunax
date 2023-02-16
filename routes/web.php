@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RelatorioController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [RelatorioController::class, 'index']);
-Route::get('/', [RelatorioController::class, 'personalizado']);
-Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa']);
-Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado']);
-Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao']);
-Route::get('/Filtrar', [RelatorioController::class, 'filtrar_de_vdd']);
-//Route::get('/Filtrar', [RelatorioController::class, 'filtrar']);
+Route::get('/', [RelatorioController::class, 'personalizado'])->middleware(['auth']);
+Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa'])->middleware(['auth']);
+Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado'])->middleware(['auth']);
+Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao'])->middleware(['auth']);
+Route::get('/Filtrar', [RelatorioController::class, 'filtrar_de_vdd'])->middleware(['auth']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

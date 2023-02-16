@@ -2,6 +2,7 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
+//use App\Http\Controllers\RelatorioController;
 
 define('LARAVEL_START', microtime(true));
 set_time_limit(300);
