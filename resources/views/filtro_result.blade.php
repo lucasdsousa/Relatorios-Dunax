@@ -75,12 +75,14 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
+ <!--<div class="mt-7 mb-4">-->
 <div class="container">
-  <h1>Relatório Geral</h1>
-  <h2>Mês de {{$mes}}</h2>
-  <h3>Dados consolidados por Empresa, Estado e Cidade</h3>
+  <h1 class="text-white">Relatório Geral</h1>
+  <h2 class="text-white">Mês de {{$mes}}</h2>
+  <h3 class="text-white">Dados consolidados por Empresa, Estado e Cidade</h3>
   <br>
   <table class="table table-hover">
+ 
   
   </table>
   </div>
