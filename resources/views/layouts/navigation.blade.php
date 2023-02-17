@@ -38,6 +38,13 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+
+                        @if(Auth::user()->type == "ADM")
+                            <x-dropdown-link href="/Cadastrar">
+                                {{ __('Novo Cadastro') }}
+                            </x-dropdown-link>
+                        @endif
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

@@ -73,6 +73,8 @@
 
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <div class="container">
   <h1>Relatório Geral</h1>
   <h2>Mês de {{$mes}}</h2>
@@ -105,6 +107,7 @@
             <!-- <th scope="col">Clientes Ativos</th> -->
             <th scope="col">Total Vendido</th>
             <th scope="col">% Litros Vendidos por Meta Cidade</th> <!-- Total Vendido / Meta Litros Cidade -->
+            </tr>
         </thead>
         <tbody>
 
@@ -336,19 +339,22 @@
 
 
 <script>
-    const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+    $('th').click(function(){
+        var table = $(this).parents('table').eq(0)
+        var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+        this.asc = !this.asc
+        if (!this.asc){rows = rows.reverse()}
+        for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+    })
 
-    const comparer = (idx, asc) => (a, b) => ((v1, v2) => 
-        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
-        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
-
-    // do the work...
-    document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
-        const table = th.closest('table');
-        Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
-            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
-            .forEach(tr => table.appendChild(tr) );
-    })));
+    function comparer(index) {
+        return function(a, b) {
+            var valA = getCellValue(a, index), valB = getCellValue(b, index)
+            return $.isNumeric(valA) && $.isNumeric(valB) ? parseInt(valA) - paserInt(valB) : valA.toString().localeCompare(valB)
+        }
+    }
+    
+    function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
 </script>
 
 @endsection

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use DateTime;
 use DatePeriod;
 use DateInterval;
@@ -19,6 +21,9 @@ class RelatorioController extends Controller
     public function personalizado(Request $request)
     {
         ini_set('memory_limit', '2056M');
+
+        $user = Auth::user();
+
 
         $cidades = DB::table('populacao_att')->select('nome_municipio')->orderBy('nome_municipio')->get();
         $estados = DB::table('populacao_att')->select('uf')->groupBy('uf')->get();
@@ -55,10 +60,15 @@ class RelatorioController extends Controller
             ->get();
 
         //$data = DB::table('dw_dunax')->selectRaw("b.regiao, a.Estado, a.IBGEEstado, a.IBGECidade, a.Cidade, count(a.Cliente) as Clientes, sum(a.Quantidade * a.Volumes) as TotalVendido as a inner join populacao_att as b on a.IBGECidade = b.cod_municipio where a.Situacao <> 'Cancelado' and a.Data between '2022-01-01' and '2022-01-31' group by a.Cidade order by b.regiao, a.Cidade;")->get();
-        //dd($data);
+        //dd($user->email);
 
 
-        return view('filtrar', compact('regN', 'regNE', 'regCO', 'regSD', 'regS', 'estados', 'cidades', 'regioes', 'empresas', 'total_litros_vendidos', 'data'));
+        if($user->type == "ADM" || $user->type == "RLT"){
+            return view('filtrar', compact('regN', 'regNE', 'regCO', 'regSD', 'regS', 'estados', 'cidades', 'regioes', 'empresas', 'total_litros_vendidos', 'data'));
+        }
+        else {
+            return view('welcome');
+        }
     }
 
     public function filtrar(Request $request)

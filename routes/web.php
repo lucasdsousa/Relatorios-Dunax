@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,14 @@ Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa'])->
 Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado'])->middleware(['auth']);
 Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao'])->middleware(['auth']);
 Route::get('/Filtrar', [RelatorioController::class, 'filtrar_de_vdd'])->middleware(['auth']);
+
+Route::get('/Cadastrar', function() {
+    return view('teste_cadastro');
+});
+
+Route::post('/Cadastrar', [RegisteredUserController::class, 'store'])->name('cadastrar');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
