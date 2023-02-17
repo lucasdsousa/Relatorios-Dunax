@@ -23,8 +23,8 @@ Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao'])->mi
 Route::get('/Filtrar', [RelatorioController::class, 'filtrar_de_vdd'])->middleware(['auth']);
 
 Route::get('/Cadastrar', function() {
-    return view('teste_cadastro');
-});
+    return view('cadastro');
+})->middleware(['auth']);
 
 Route::post('/Cadastrar', [RegisteredUserController::class, 'store'])->name('cadastrar');
 

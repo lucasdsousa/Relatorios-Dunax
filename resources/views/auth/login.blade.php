@@ -51,13 +51,6 @@
             <x-primary-button class="ml-3">
                 {{ __('Entrar') }}
             </x-primary-button>
-
-            <a href="{{ route('register') }}">
-                
-                <x-secondary-button class="ml-3">
-                    {{ __('Registrar') }}
-                </x-secondary-button>
-            </a>
         </div>
     </form>
 </x-guest-layout>
