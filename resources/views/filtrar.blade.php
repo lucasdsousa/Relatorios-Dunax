@@ -6,8 +6,8 @@
     @csrf
 
     <div class="row container mt-5">
-        <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Limpar Filtro</a>
-    </div>
+  <a href="/" class="btn btn-danger mb-2 col-md-2" style="margin-left: 5%; border-left: none;">Limpar Filtro</a>
+</div>
 
     <style>
   body {
@@ -61,6 +61,10 @@
   body {
     background-size: 10%;
   }
+}
+
+.btn-danger {
+  background-color: #dc3545;
 }
 
   table {
@@ -131,12 +135,14 @@ h4 {
 
 </style>
 
-    <div class="mt-7 mb-4">
-
-
+<div class="mt-7 mb-4">
+  <h2 class="text-white">Relatório de KPI's por Empresa e Estado</h2>
+  <h3 class="text-white">...Defina mês de referencia depois Empresa e/ou Estado</h3>
+</div>
+    <!--<div class="mt-7 mb-4">
   <h2>Relatório de KPI's por Empresa e Estado</h2>
   <h3>...Defina mês de referencia depois Empresa e/ou Estado</h3>
-</div>
+</div>-->
 
    <!-- <div class="row container mt-5 text-center width: 100%"> 
     <div class="row container mt-5 text-center" style="width:100%; margin-right: 30%; margin-left: 30%; auto; margin: 0 auto;">
@@ -175,7 +181,8 @@ h4 {
                     </div> -->
                 
                     <div class="col-md-2" id="periodo">
-                        <label for="periodo" class="form-label">Escolha o Mês</label>
+                        <!--<label for="periodo" class="form-label">Escolha o Mês</label>-->
+                        <label for="periodo" class="form-label" style="color: white;">Escolha o Mês</label>
                         <select name="periodo" class="form-select">
                             <option selected value="0">Selecione...</option>
 
@@ -310,7 +317,8 @@ h4 {
         </div> -->
         
         <div class="col-md-2" id="empresa">
-            <label for="empresa" class="form-label">Empresa</label>
+            <!--<label for="empresa" class="form-label">Empresa</label>-->
+            <label for="empresa" class="form-label" style="color: white;">Empresa</label>
             <select name="empresa" class="form-select">
             <option selected value="0">Selecione...</option>
             @foreach($empresas as $e)
@@ -320,7 +328,8 @@ h4 {
         </div>
 
         <div class="col-md-2" id="estado">
-            <label for="estado" class="form-label">Estado</label>
+            <!--<label for="estado" class="form-label">Estado</label>-->
+            <label for="estado" class="form-label" style="color: white;">Estado</label>
             <select name="estado" class="form-select">
             <option selected value="0">Selecione...</option>
             <option value="AC">Acre</option>
@@ -353,10 +362,16 @@ h4 {
         </div>
         
     </div>
+    
+   <!-- <a href="/" class="btn btn-danger btn-red text-white mb-2 col-md-2" style="margin-left: 5%; border-left: none;">Limpar Filtro</a>
+    <a href="/" class="btn btn-danger btn-red text-white mb-2 col-md-2" style="margin-left: 5%; border-left: none;">Limpar Filtro</a>
+    <a href="/" class="btn btn-danger                    mb-2 col-md-2" style="margin-left: 5%; border-left: none;">Limpar Filtro</a>
+  <button type="submit" id="empresa" class="btn-red btn-danger text-white mx-3 center-button mb-2 col-md-2 rounded" style="width: 70%; margin: 0 auto" formaction="/Filtrar">Filtrar</button>-->
 
   <!-- <div class="col-1 mt-3 center-button" style="width:36%; margin-right: 30%; margin-left: 30%; auto;"> -->
   <div class="mt-5 d-flex justify-content-center align-items-center mb-3">
-  <button type="submit" id="empresa" class="btn btn-danger text-white mx-3 center-button" style="width: 70%; margin: 0 auto;" formaction="/Filtrar">Filtrar</button>
+  <!--<button type="submit" id="empresa" class="btn-red btn-danger text-white mx-3 center-button mb-2 col-md-2" style="width: 70%; margin: 0 auto" formaction="/Filtrar">Filtrar</button>-->
+  <button type="submit" id="empresa" class="btn btn-danger text-white mx-4 center-button mb-2 col-md-2 rounded" style="width: 18%; margin: 0 auto" formaction="/Filtrar">Filtrar</button>
 
    <!--<div class="col-1 mt-3 center">
                      <button type="submit" id="buscar" class="btn btn-info text-white" style="margin-right: 250px" formaction="/Filtrar">Filtrar Período</button> 
@@ -367,6 +382,10 @@ h4 {
 </div>
 </form>
 
+<div class="mt-5 d-flex justify-content-center align-items-center mb-3">
+  <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Descrição da imagem">
+</div>
+
 <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
     var estado = $("[name=estado] option").detach()
@@ -376,11 +395,11 @@ h4 {
     estado.filter("." + val).clone().appendTo("[name=estado]")
     }).change()
 
-</script> -->
+</script> 
 
 <div>
             <h4>    Dunax </h4>
       
-            </div>
+            </div>-->
            
 @endsection

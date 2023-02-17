@@ -30,7 +30,11 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
+<<<<<<< HEAD
             <x-input-label for="password_confirmation" :value="__('Confirme a Senha')" />
+=======
+            <x-input-label for="password_confirmation" :value="__('Confirme a senha')" />
+>>>>>>> main
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"
@@ -41,11 +45,19 @@
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+<<<<<<< HEAD
                 {{ __('Já possui cadastro?') }}
             </a>
 
             <x-primary-button class="ml-4">
                 {{ __('Cadastrar') }}
+=======
+                {{ __('Já é cadastrado?') }}
+            </a>
+
+            <x-primary-button class="ml-4">
+                {{ __('Registrar') }}
+>>>>>>> main
             </x-primary-button>
         </div>
     </form>

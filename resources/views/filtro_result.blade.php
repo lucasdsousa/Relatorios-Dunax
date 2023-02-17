@@ -5,11 +5,11 @@
 
 <br>
 <!--<div class="row container mt-5 mr-auto sticky-top">
-  <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>-->
+  <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
+-->
   <div class="row container mt-5">
-    <a href="/" class="btn btn-outline-danger mb-2 col-md-2">Voltar</a>
+    <a href="/" class="btn btn-danger mb-2 col-md-2" style= "margin-left: 5%; border-left: none;">Voltar</a>
 </div>
-  
 
 <style>
 /* body {
