@@ -43,6 +43,12 @@
             <x-primary-button class="ml-3">
                 {{ __('Entrar') }}
             </x-primary-button>
+
+            <a href="/Cadastrar">
+                <x-secondary-button class="ml-3">
+                    {{ __('Cadastrar') }}
+                </x-secondary-button>
+            </a>
         </div>
     </form>
 </x-guest-layout>
