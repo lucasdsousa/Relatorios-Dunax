@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [RelatorioController::class, 'personalizado'])->middleware(['auth'])->name('home');
+Route::get('/', [RelatorioController::class, 'personalizado'])->middleware(['auth']);
 Route::get('/Filtrar-Empresa', [RelatorioController::class, 'filtrarEmpresa'])->middleware(['auth']);
 Route::get('/Filtrar-Estado', [RelatorioController::class, 'filtrarEstado'])->middleware(['auth']);
 Route::get('/Filtrar-Regiao', [RelatorioController::class, 'filtrarRegiao'])->middleware(['auth']);
