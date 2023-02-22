@@ -17,8 +17,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
-        <!--<div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">-->
+    <div class="min-h-screen bg-gray-100" style="background-image: linear-gradient(to bottom, #4B5563, #f7f2f2); background-repeat: no-repeat; background-size: cover;">
+        <!--<div class="min-h-screen bg-gray-100" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
+         <div class="flex flex-col items-center justify-center min-h-screen" style="background-color: #4B5563;">
+       <div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">-->
             @include('layouts.navigation')
 
             <!-- Page Heading -->

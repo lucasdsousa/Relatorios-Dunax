@@ -16,8 +16,9 @@
     </head>
    
     <body class="font-sans text-gray-900 antialiased flex-1">
-        <!--<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">-->
-        <div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
+        <!--<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
+        <div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #f7f2f2)">-->
+        <div class="flex flex-col items-center justify-center min-h-screen" style="background-color: #4B5563;">
             <!--<div>
                 <a href="/">
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />

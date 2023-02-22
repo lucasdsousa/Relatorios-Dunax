@@ -208,8 +208,8 @@ h4 {
                             <option selected value="0">Selecione...</option>
                             
                             
-                            <!-- 2022 -->
-                            <!-- <option value="2022-01">Janeiro/22</option>
+                            2022 -->
+                            <option value="2022-01">Janeiro/22</option>
                             <option value="2022-02">Fevereiro/22</option>
                             <option value="2022-03">Março/22</option>
                             <option value="2022-04">Abril/22</option>
@@ -220,7 +220,7 @@ h4 {
                             <option value="2022-09">Setembro/22</option>
                             <option value="2022-10">Outubro/22</option>
                             <option value="2022-11">Novembro/22</option>
-                            <option value="2022-12">Dezembro/22</option> -->
+                            <option value="2022-12">Dezembro/22</option>
                             
                             <!-- 2023 -->
                             <option value="2023-01">Janeiro/23</option>
