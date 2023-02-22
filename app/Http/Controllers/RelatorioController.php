@@ -428,6 +428,7 @@ class RelatorioController extends Controller
         $periodo_date = date('Y-m-d', strtotime($periodo));
 
         $mes = date('m/Y', strtotime($periodo));
+        $ano = date('Y', strtotime($periodo));
 
         if ($estado == 0 && $empresa != 0) {
 
@@ -475,7 +476,7 @@ class RelatorioController extends Controller
                 ->groupBy('IBGECidade')
                 ->value('Clientes');
 
-            return view('filtro_result', compact('periodo', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+            return view('filtro_result', compact('periodo', 'empresa', 'estado', 'mes', 'ano', 'data', 'clientes_ativos'));
         } else if ($empresa == 0 && $estado != 0) {
 
             $data = DB::table('dw_dunax')
@@ -525,7 +526,7 @@ class RelatorioController extends Controller
                 return view('filtro_result_estado', compact('jan_2023', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
             } */
             //dd(substr($periodo, 0, 4));
-            return view('filtro_result', compact('jan_2023', 'periodo', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+            return view('filtro_result', compact('jan_2023', 'periodo', 'empresa', 'estado', 'mes', 'ano', 'data', 'clientes_ativos'));
         } else if ($empresa != 0 && $estado != 0) {
 
             $data = DB::table('dw_dunax')
@@ -568,7 +569,7 @@ class RelatorioController extends Controller
                 ->groupBy('IBGECidade')
                 ->value('Clientes');
 
-            return view('filtro_result', compact('jan_2023', 'periodo', 'empresa', 'estado', 'mes', 'data', 'clientes_ativos'));
+            return view('filtro_result', compact('jan_2023', 'periodo', 'empresa', 'estado', 'mes', 'ano', 'data', 'clientes_ativos'));
         } else {
             return view('index');
         }
