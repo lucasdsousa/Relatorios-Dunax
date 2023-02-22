@@ -10,7 +10,8 @@
                     </a>
                 </div>-->
                 <div class="shrink-0 flex items-center">
-    <a href="/">
+    <!--<a href="{{ route('dashboard') }}">-->
+    <a href="http://dulub.servehttp.com:4040/">
         <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Logo da dulub" class="block h-9 w-auto">
     </a>
 </div>

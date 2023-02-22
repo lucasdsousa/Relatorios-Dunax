@@ -22,32 +22,37 @@
           background-position-y: top;
           background-size: 40%;
       } */
+   
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    font-family: Arial, sans-serif;    
-  }
-  
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  th {
-    border: 1px solid black;
-    background-color: black;
-    font-weight: bold;
-    position: sticky;
-    top: 0;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  border: 1px solid black;
+  background-color: #f2f2f2;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff;
+}
+
   h3, h2, h1 {
     text-align: center;
     font-family: Arial, sans-serif;

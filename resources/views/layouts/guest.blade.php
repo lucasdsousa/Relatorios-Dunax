@@ -16,9 +16,22 @@
     </head>
    
     <body class="font-sans text-gray-900 antialiased flex-1">
-        <!--<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">-->
-        <div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
-            
+        <!--<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0" style="background-image: linear-gradient(to bottom, #4B5563, #000000)">
+        <div class="flex flex-col items-center justify-center min-h-screen" style="background-image: linear-gradient(to bottom, #4B5563, #f7f2f2)">-->
+        <div class="flex flex-col items-center justify-center min-h-screen" style="background-color: #4B5563;">
+            <!--<div>
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+                <a href="/">
+                    <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Logo da Dulub" class="w-20 h-20">
+                </a>
+            </div>
+            <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}">
+                            <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Logo da empresa" class="block h-9 w-auto">
+                    </a>
+            </div>-->
             <div class="flex justify-center">
                 <a href="{{ route('dashboard') }}">
                      <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Logo da empresa" class="h-10 w-auto mb-3 mt-3">
