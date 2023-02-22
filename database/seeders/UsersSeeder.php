@@ -22,5 +22,12 @@ class UsersSeeder extends Seeder
             'type' => 'ADM',
             'password' => Hash::make('*dUNAXADM()1452'),
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Usuário',
+            'email' => 'user_prov@dulub.com.br',
+            'type' => 'ADM',
+            'password' => Hash::make('*dUNAX()123'),
+        ]);
     }
 }
