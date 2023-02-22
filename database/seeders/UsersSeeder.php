@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
             'name' => 'Admin Dulub',
             'email' => 'admin@dulub.com',
             'type' => 'ADM',
-            'password' => Hash::make('*rELATORIOS()'),
+            'password' => Hash::make('*dUNAXADM()1452'),
         ]);
     }
 }
