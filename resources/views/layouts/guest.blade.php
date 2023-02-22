@@ -35,17 +35,12 @@
             <div class="flex justify-center">
                 <a href="{{ route('dashboard') }}">
                      <img src="https://www.dulub.com.br/images/Logo%20-%20Rodap%C3%A9.svg" alt="Logo da empresa" class="h-10 w-auto mb-3 mt-3">
-                 </a >
+                 </a>
             </div>
 
-            <!--<div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
-            </div>-->
-
-            <!--<div class="w-full sm:max-w-md mt-6 mx-auto max-w-lg px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>-->
-
-         </div>
+            </div>
+        </div>
     </body>
 </html>
